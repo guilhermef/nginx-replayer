@@ -1,0 +1,25 @@
+upstream upstream_primary {
+    server  ${PRIMARY_SERVER};
+}
+
+upstream upstream_secondary {
+    server  ${SECONDARY_SERVER};
+}
+
+server {
+    listen              80;
+    proxy_buffering off;
+
+    location / {
+        proxy_redirect      off;
+        proxy_pass          http://upstream_primary;
+        post_action @secondary_request;
+    }
+
+    location @secondary_request {
+        internal;
+        proxy_redirect      off;
+        proxy_pass          http://upstream_secondary;
+    }
+
+}
