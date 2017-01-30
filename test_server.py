@@ -12,9 +12,8 @@ class S(BaseHTTPRequestHandler):
 
     def do_POST(self):
         self._set_headers()
-        print "in post method"
         self.data_string = self.rfile.read(int(self.headers['Content-Length']))
-
+        print(self.headers)
         self.send_response(200)
         self.end_headers()
         print "{}".format(self.data_string)
