@@ -9,6 +9,11 @@ upstream upstream_secondary {
 server {
     listen              80;
     proxy_buffering off;
+    client_body_buffer_size 1024k;
+
+    location /healthcheck.html {
+      return 200 'WORKING';
+    }
 
     location / {
         proxy_redirect      off;

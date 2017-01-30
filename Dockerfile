@@ -1,7 +1,7 @@
 FROM nginx:alpine
 
-ENV PRIMARY_SERVER 10.0.23.0:6969
-ENV SECONDARY_SERVER 10.0.23.0:6970
+ENV PRIMARY_SERVER localhost:6969
+ENV SECONDARY_SERVER localhost:6970
 
 
 COPY nginx.conf /etc/nginx/nginx.conf
