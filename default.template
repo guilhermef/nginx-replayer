@@ -26,7 +26,7 @@ server {
 
     location / {
         proxy_pass          http://upstream_primary;
-        post_action @secondary_request;
+        #post_action @secondary_request;
     }
 
     location @secondary_request {
